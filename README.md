@@ -2,7 +2,7 @@
 
 OPML parser written in swift 2.0.
 
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Travis CI](https://travis-ci.org/younata/Lepton.svg)](https://travis-ci.org/younata/Lepton)
 
 ###Usage
 
