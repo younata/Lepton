@@ -34,7 +34,7 @@ Swift 2.0:
 
 * add `github "younata/Lepton"`
 
-####Cocoapods
+####CocoaPods
 
 Make sure that `user_frameworks!` is defined in your Podfile
 
