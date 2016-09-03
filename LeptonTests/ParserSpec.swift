@@ -4,8 +4,8 @@ import Lepton
 
 class ParserSpec: QuickSpec {
     override func spec() {
-        let bundle = NSBundle(forClass: ParserSpec.self)
-        let str = try! String(contentsOfFile: bundle.pathForResource("test", ofType: "opml")!, encoding: NSUTF8StringEncoding)
+        let bundle = Bundle(for: ParserSpec.self)
+        let str = try! String(contentsOfFile: bundle.path(forResource: "test", ofType: "opml")!, encoding: String.Encoding.utf8)
         
         
         describe("Parsing a string") {
@@ -16,7 +16,7 @@ class ParserSpec: QuickSpec {
             }
             
             it("pulls out regular feeds") {
-                parser.success {(items) in
+                _ = parser.success {(items) in
                     let regularFeeds = items.filter { !$0.isQueryFeed() }
                     expect(regularFeeds.count).to(equal(3))
                     if let feed = regularFeeds.first {
@@ -31,14 +31,14 @@ class ParserSpec: QuickSpec {
                         expect(feed.summary).to(beNil())
                         expect(feed.xmlURL).to(equal("http://example.com/feedWithTitle"))
                         expect(feed.query).to(beNil())
-                        expect(feed.tags).to(beNil())
+                        expect(feed.tags) == []
                     }
                 }
                 parser.main()
             }
             
             it("pulls out rNews-style query feeds") {
-                parser.success {(items) in
+                _ = parser.success {(items) in
                     let queryFeeds = items.filter { $0.isQueryFeed() }
                     expect(queryFeeds.count).to(equal(1))
                     if let feed = queryFeeds.first {
@@ -46,7 +46,7 @@ class ParserSpec: QuickSpec {
                         expect(feed.summary).to(beNil())
                         expect(feed.xmlURL).to(beNil())
                         expect(feed.query).to(equal("return true;"))
-                        expect(feed.tags).to(beNil())
+                        expect(feed.tags) == []
                     }
                 }
                 parser.main()

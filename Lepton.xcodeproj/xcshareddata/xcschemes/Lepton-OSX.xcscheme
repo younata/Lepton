@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8902D5161BB067C0003D7C22"
-               BuildableName = "Lepton-OSX.framework"
+               BuildableName = "Lepton.framework"
                BlueprintName = "Lepton-OSX"
                ReferencedContainer = "container:Lepton.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8902D5161BB067C0003D7C22"
-            BuildableName = "Lepton-OSX.framework"
+            BuildableName = "Lepton.framework"
             BlueprintName = "Lepton-OSX"
             ReferencedContainer = "container:Lepton.xcodeproj">
          </BuildableReference>
@@ -55,7 +55,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8902D5161BB067C0003D7C22"
-            BuildableName = "Lepton-OSX.framework"
+            BuildableName = "Lepton.framework"
             BlueprintName = "Lepton-OSX"
             ReferencedContainer = "container:Lepton.xcodeproj">
          </BuildableReference>
@@ -73,7 +73,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8902D5161BB067C0003D7C22"
-            BuildableName = "Lepton-OSX.framework"
+            BuildableName = "Lepton.framework"
             BlueprintName = "Lepton-OSX"
             ReferencedContainer = "container:Lepton.xcodeproj">
          </BuildableReference>
