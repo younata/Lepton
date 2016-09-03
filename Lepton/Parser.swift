@@ -1,36 +1,44 @@
 import Foundation
 
-public class Item: NSObject {
-    public var title: String? = nil
-    public var summary: String? = nil
-    public var xmlURL: String? = nil
-    public var query: String? = nil
-    public var tags: [String]? = nil
+public struct Item {
+    public var title: String?
+    public var summary: String?
+    public var xmlURL: String?
+    public var query: String?
+    public var tags: [String]
 
-    private func isValidItem() -> Bool {
+    fileprivate func isValidItem() -> Bool {
         return xmlURL != nil || (query != nil && title != nil)
     }
 
     public func isQueryFeed() -> Bool {
         return query != nil
     }
+
+    public init(title: String?, summary: String?, xmlURL: String?, query: String?, tags: [String]) {
+        self.title = title
+        self.summary = summary
+        self.xmlURL = xmlURL
+        self.query = query
+        self.tags = tags
+    }
 }
 
-public class Parser: NSOperation, NSXMLParserDelegate {
+public final class Parser: Operation, XMLParserDelegate {
     var callback: ([Item]) -> Void = {(_) in }
     var onFailure: (NSError) -> Void = {(_) in }
 
     private var content: String? = nil
-    private var xmlParser: NSXMLParser? = nil
+    private var xmlParser: XMLParser? = nil
     private var items: [Item] = []
     private var isOPML = false
 
-    public func success(onSuccess: ([Item]) -> Void) -> Parser {
+    public func success(_ onSuccess: @escaping ([Item]) -> Void) -> Parser {
         callback = onSuccess
         return self
     }
 
-    public func failure(failed: (NSError) -> Void) -> Parser {
+    public func failure(_ failed: @escaping (NSError) -> Void) -> Parser {
         onFailure = failed
         return self
     }
@@ -44,7 +52,7 @@ public class Parser: NSOperation, NSXMLParserDelegate {
         super.init()
     }
 
-    func configureWithText(text: String) {
+    func configureWithText(_ text: String) {
         content = text
     }
 
@@ -59,7 +67,7 @@ public class Parser: NSOperation, NSXMLParserDelegate {
     private func parse() {
         items = []
         if let text = content {
-            xmlParser = NSXMLParser(data: text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+            xmlParser = XMLParser(data: text.data(using: String.Encoding.utf8, allowLossyConversion: false)!)
             xmlParser?.delegate = self
             xmlParser?.parse()
         }
@@ -71,29 +79,29 @@ public class Parser: NSOperation, NSXMLParserDelegate {
 
     // MARK: NSXMLParserDelegate
 
-    public func parserDidEndDocument(parser: NSXMLParser) {
+    public func parserDidEndDocument(_ parser: XMLParser) {
         if (isOPML) {
             callback(items)
         }
     }
 
-    public func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
+    public func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
         isOPML = false
-        onFailure(parseError)
+        onFailure(parseError as NSError)
     }
 
-    public func parser(parser: NSXMLParser, didStartElement elementName: String,
+    public func parser(_ parser: XMLParser, didStartElement elementName: String,
         namespaceURI: String?, qualifiedName qName: String?,
         attributes attributeDict: [String: String]) {
-            if elementName.lowercaseString == "xml" { return }
-            if elementName.lowercaseString == "opml" { isOPML = true }
+            if elementName.lowercased() == "xml" { return }
+            if elementName.lowercased() == "opml" { isOPML = true }
             if (!isOPML) { return }
 
-            if elementName.lowercaseString.hasPrefix("outline") {
-                let item = Item()
-                let whitespaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            if elementName.lowercased().hasPrefix("outline") {
+                var item = Item(title: nil, summary: nil, xmlURL: nil, query: nil, tags: [])
+                let whitespaceSet = CharacterSet.whitespacesAndNewlines
                 for (k, value) in attributeDict {
-                    let key = k.lowercaseString
+                    let key = k.lowercased()
                     if value == "" {
                         continue
                     }
@@ -101,9 +109,9 @@ public class Parser: NSOperation, NSXMLParserDelegate {
                         item.xmlURL = value
                     }
                     if key == "tags" {
-                        let comps = value.componentsSeparatedByString(",") as [String]
+                        let comps = value.components(separatedBy: ",") as [String]
                         item.tags = comps.map({(str: String) in
-                            return str.stringByTrimmingCharactersInSet(whitespaceSet)
+                            return str.trimmingCharacters(in: whitespaceSet)
                         })
                     }
                     if key == "query" {

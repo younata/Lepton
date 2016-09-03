@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		8902D4FC1BB0677F003D7C22 /* Lepton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8902D4FB1BB0677F003D7C22 /* Lepton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8902D5031BB0677F003D7C22 /* Lepton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D4F81BB0677F003D7C22 /* Lepton.framework */; settings = {ASSET_TAGS = (); }; };
+		8902D5031BB0677F003D7C22 /* Lepton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D4F81BB0677F003D7C22 /* Lepton.framework */; };
 		8902D51A1BB067C0003D7C22 /* Lepton.h in Headers */ = {isa = PBXBuildFile; fileRef = 8902D5191BB067C0003D7C22 /* Lepton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8902D5211BB067C1003D7C22 /* Lepton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D5171BB067C0003D7C22 /* Lepton.framework */; settings = {ASSET_TAGS = (); }; };
-		8902D52F1BB0689C003D7C22 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D52E1BB0689C003D7C22 /* Parser.swift */; settings = {ASSET_TAGS = (); }; };
-		8902D5301BB0689C003D7C22 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D52E1BB0689C003D7C22 /* Parser.swift */; settings = {ASSET_TAGS = (); }; };
-		8902D5321BB068CA003D7C22 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D5311BB068CA003D7C22 /* ParserSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		8902D5331BB068CA003D7C22 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D5311BB068CA003D7C22 /* ParserSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		8902D5351BB068D8003D7C22 /* test.opml in Resources */ = {isa = PBXBuildFile; fileRef = 8902D5341BB068D8003D7C22 /* test.opml */; settings = {ASSET_TAGS = (); }; };
-		8902D5361BB068D8003D7C22 /* test.opml in Resources */ = {isa = PBXBuildFile; fileRef = 8902D5341BB068D8003D7C22 /* test.opml */; settings = {ASSET_TAGS = (); }; };
+		8902D5211BB067C1003D7C22 /* Lepton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D5171BB067C0003D7C22 /* Lepton.framework */; };
+		8902D52F1BB0689C003D7C22 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D52E1BB0689C003D7C22 /* Parser.swift */; };
+		8902D5301BB0689C003D7C22 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D52E1BB0689C003D7C22 /* Parser.swift */; };
+		8902D5321BB068CA003D7C22 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D5311BB068CA003D7C22 /* ParserSpec.swift */; };
+		8902D5331BB068CA003D7C22 /* ParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8902D5311BB068CA003D7C22 /* ParserSpec.swift */; };
+		8902D5351BB068D8003D7C22 /* test.opml in Resources */ = {isa = PBXBuildFile; fileRef = 8902D5341BB068D8003D7C22 /* test.opml */; };
+		8902D5361BB068D8003D7C22 /* test.opml in Resources */ = {isa = PBXBuildFile; fileRef = 8902D5341BB068D8003D7C22 /* test.opml */; };
 		8902D5391BB0698D003D7C22 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D5371BB0698D003D7C22 /* Nimble.framework */; };
 		8902D53A1BB0698D003D7C22 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D5381BB0698D003D7C22 /* Quick.framework */; };
 		8902D53C1BB069A7003D7C22 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8902D5371BB0698D003D7C22 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -306,9 +306,11 @@
 					};
 					8902D5161BB067C0003D7C22 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					8902D51F1BB067C1003D7C22 = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -591,6 +593,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -612,6 +615,7 @@
 				PRODUCT_NAME = Lepton;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -630,6 +634,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rachelbrindle.Lepton-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -648,6 +653,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rachelbrindle.Lepton-OSXTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -670,6 +676,7 @@
 				8902D50E1BB0677F003D7C22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8902D50F1BB0677F003D7C22 /* Build configuration list for PBXNativeTarget "LeptonTests" */ = {
 			isa = XCConfigurationList;
@@ -678,6 +685,7 @@
 				8902D5111BB0677F003D7C22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8902D5281BB067C1003D7C22 /* Build configuration list for PBXNativeTarget "Lepton-OSX" */ = {
 			isa = XCConfigurationList;
@@ -686,6 +694,7 @@
 				8902D52A1BB067C1003D7C22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8902D52B1BB067C1003D7C22 /* Build configuration list for PBXNativeTarget "Lepton-OSXTests" */ = {
 			isa = XCConfigurationList;
@@ -694,6 +703,7 @@
 				8902D52D1BB067C1003D7C22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
