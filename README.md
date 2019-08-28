@@ -1,10 +1,10 @@
-##Lepton
+# Lepton
 
-OPML parser written in swift 2.0.
+OPML parser written in swift.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Travis CI](https://travis-ci.org/younata/Lepton.svg)](https://travis-ci.org/younata/Lepton)
 
-###Usage
+## Usage
 
 ```swift
 import Lepton
@@ -22,32 +22,29 @@ parser.failure {
 parser.main() // or add to an NSOperationQueue
 ```
 
-Lepton supports standard rss/atom feeds, as well as [rNews-style](https://github.com/younata/RSSClient) query feeds (javascript that can be used to construct a meta feed consisting of articles from other feeds).
+Lepton supports standard rss/atom feeds.
 
 Lepton is used with Muon in rNews, but they are independent of each other.
 
-###Installing
+## Installing
 
-####Carthage
+### Carthage
 
-Swift 2.0:
+Swift 5:
 
 * add `github "younata/Lepton"`
 
-####CocoaPods
+## ChangeLog
 
-Make sure that `user_frameworks!` is defined in your Podfile
+### 0.2.0
 
-Swift 2.0:
+- Update for swift 5
+- Remove support for Query Feeds
 
-* add `Pod "Lepton" :git => "https://github.com/younata/Lepton.git"`
-
-###ChangeLog
-
-#### 0.1.0
+### 0.1.0
 
 - Initial release.
 
-### License
+## License
 
 [MIT](LICENSE)

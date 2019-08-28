@@ -1,25 +1,19 @@
 import Foundation
 
-public struct Item {
+public struct Item: Hashable {
     public var title: String?
     public var summary: String?
     public var xmlURL: String?
-    public var query: String?
     public var tags: [String]
 
     fileprivate func isValidItem() -> Bool {
-        return xmlURL != nil || (query != nil && title != nil)
-    }
-
-    public func isQueryFeed() -> Bool {
-        return query != nil
+        return xmlURL != nil
     }
 
     public init(title: String?, summary: String?, xmlURL: String?, query: String?, tags: [String]) {
         self.title = title
         self.summary = summary
         self.xmlURL = xmlURL
-        self.query = query
         self.tags = tags
     }
 }
@@ -113,9 +107,6 @@ public final class Parser: Operation, XMLParserDelegate {
                         item.tags = comps.map({(str: String) in
                             return str.trimmingCharacters(in: whitespaceSet)
                         })
-                    }
-                    if key == "query" {
-                        item.query = value
                     }
                     if key == "title" {
                         item.title = value

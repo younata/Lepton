@@ -17,35 +17,17 @@ class ParserSpec: QuickSpec {
             
             it("pulls out regular feeds") {
                 _ = parser.success {(items) in
-                    let regularFeeds = items.filter { !$0.isQueryFeed() }
-                    expect(regularFeeds.count).to(equal(3))
-                    if let feed = regularFeeds.first {
+                    expect(items.count).to(equal(3))
+                    if let feed = items.first {
                         expect(feed.title).to(equal("nil"))
                         expect(feed.summary).to(beNil())
                         expect(feed.xmlURL).to(equal("http://example.com/feedWithTag"))
-                        expect(feed.query).to(beNil())
                         expect(feed.tags).to(equal(["a tag"]))
                     }
-                    if let feed = regularFeeds.last {
+                    if let feed = items.last {
                         expect(feed.title).to(equal("Feed With Title"))
                         expect(feed.summary).to(beNil())
                         expect(feed.xmlURL).to(equal("http://example.com/feedWithTitle"))
-                        expect(feed.query).to(beNil())
-                        expect(feed.tags) == []
-                    }
-                }
-                parser.main()
-            }
-            
-            it("pulls out rNews-style query feeds") {
-                _ = parser.success {(items) in
-                    let queryFeeds = items.filter { $0.isQueryFeed() }
-                    expect(queryFeeds.count).to(equal(1))
-                    if let feed = queryFeeds.first {
-                        expect(feed.title).to(equal("Query Feed"))
-                        expect(feed.summary).to(beNil())
-                        expect(feed.xmlURL).to(beNil())
-                        expect(feed.query).to(equal("return true;"))
                         expect(feed.tags) == []
                     }
                 }
